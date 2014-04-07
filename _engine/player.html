@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!-- INJECTS IE CLASSES ONTO HTML TAG -->
+<!--[if IE 8 ]>    <html class="IE8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="IE9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class=""> <!--<![endif]-->
+<head>
+	<title>Materia Widget Player</title>
+	<meta charset="utf-8" />
+
+	<!-- STYLESHEETS -->
+	<link href='reset.css' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Droid+Sans|Chewy|Open+Sans' rel='stylesheet' type='text/css'>
+	<link href='styles.css' rel='stylesheet' type='text/css'>
+
+
+	<!-- REQUIRED MATERIA JAVASCRIPT -->
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/materia.enginecore.js"></script>
+	<script type="text/javascript" src="/js/materia.score.js"></script>
+
+	<!-- OPTIONAL MATERIA JAVASCRIPT -->
+	<!-- <script type="text/javascript" src="/js/materia.storage.manager.js"></script> -->
+	<!-- <script type="text/javascript" src="/js/materia.storage.table.js"></script> -->
+
+	<!-- YOUR PREREQUISITES -->
+
+	<!-- MAIN PLAYER SCRIPT -->
+
+	<script type="text/javascript" src="player.js"></script>
+</head>
+<body>
+
+	You need to match term with definition, math problem with solution, etc.
+	It has a picture behind it, like puppies or kittens or something.
+	Timing you to encourage you to beat your own time.
+	Different levels of difficulty, with more cards for higher levels.
+	Leaderboards and high scores.
+	We can do this with the data already generated for flash cards.
+	She has a deck of flashcards in Materia already
+	Can teachers import respondus for flash cards?  No
+	<button id="start">Start</button>
+	<p id="timer">0 (Hit Start)</p>
+	<p id="score">Score: <span>0</span></p>
+	<div id="game"></div>
+
+	<!-- INITIALIZE -->
+	<script type="text/javascript">
+	Materia.Engine.start(Concentration.Engine);
+	</script>
+</body>
+</html>
