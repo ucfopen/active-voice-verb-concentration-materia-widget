@@ -1,5 +1,5 @@
 (function() {
-	Namespace('Concentration').Engine = (function() {
+  Namespace('Concentration').Engine = (function() {
 
 //TODO:
 var level = 1;
@@ -7,7 +7,6 @@ var game = false;
 
 var matchQ = ["past _ have + -en + help", "pres + have + -en + work", "past + be + -ing + work", "pres + will + be + -ing + play", "past + be + -ing + be", "pres + be + -ing + have", "past + shall + have + -en + have", "past + have + -en + have", "past + can + -en + be", "pres + may + have + -en + be + -ing + try", "past + may + have + -en + be + -ing + be", "past + be + -ing + study", "pres + have + -en + find", "past + lose", "pres + have + -en + be + -ing + skip", "past + can + be", "past + crash", "pres + seem", "pres + will + be + -ing + have", "pres + may + be + -ing + graduate", "past + shall + have + -en + study"];
 var matchA = ["had helped", "has worked", "was working", "will be playing", "was being", "is having", "should have had", "had had", "could have been", "may have been trying", "might have been being", "were studying", "have found", "lost", "has been skipping", "could be", "crashed", "seems", "will be having", "may be graduating", "should have studied"];
-console.log(matchA);
 var setList = [];
 var usedCards = [];
 var score = [];
@@ -207,6 +206,7 @@ function cardClick(e) {
             score.push(potentialWin);
             console.log("win @: ", potentialWin);
             stahp = true;
+            console.log(score);
             //winning message somewhere!
           }
 
@@ -235,13 +235,20 @@ function cardClick(e) {
     level++;
     clearInterval(timerId);
     timerId = null;
-    console.log(score[0]);
     //generate button to offer next level    
     $("#game").fadeIn("fast", function(){
-        $(this).append("<p id='confirm'>Congrats! You did it. BANANAS. On to the next level...");
+        $(this).append("<p id='confirm'>Congrats! You did it. On to the next level...");
         $('#confirm').on("click", function(){
+            //show confirmation message that the level was completed
              $("#confirm").fadeOut(200).empty();
-             generateCards(12);
+             //generates cards based on the current level
+             //levels will generate 2 times the level, plus 2 cards
+             generateCards((level*2)+2);
+             console.log(level);
+             //generate new timer
+             updateTimer.html("00:00:00");
+             tick(timerId);
+
         });
 
     });
