@@ -82,3 +82,10 @@ body {
 #game {
 	margin: 0 auto;
 }
+
+#confirm{
+	cursor: pointer;
+	display: block;
+	margin: 0px auto;
+	padding: 5px;
+}

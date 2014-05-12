@@ -1,14 +1,13 @@
-
 (function() {
 	Namespace('Concentration').Engine = (function() {
 
 //TODO:
-
 var level = 1;
 var game = false;
 
 var matchQ = ["past _ have + -en + help", "pres + have + -en + work", "past + be + -ing + work", "pres + will + be + -ing + play", "past + be + -ing + be", "pres + be + -ing + have", "past + shall + have + -en + have", "past + have + -en + have", "past + can + -en + be", "pres + may + have + -en + be + -ing + try", "past + may + have + -en + be + -ing + be", "past + be + -ing + study", "pres + have + -en + find", "past + lose", "pres + have + -en + be + -ing + skip", "past + can + be", "past + crash", "pres + seem", "pres + will + be + -ing + have", "pres + may + be + -ing + graduate", "past + shall + have + -en + study"];
 var matchA = ["had helped", "has worked", "was working", "will be playing", "was being", "is having", "should have had", "had had", "could have been", "may have been trying", "might have been being", "were studying", "have found", "lost", "has been skipping", "could be", "crashed", "seems", "will be having", "may be graduating", "should have studied"];
+console.log(matchA);
 var setList = [];
 var usedCards = [];
 var score = [];
@@ -21,14 +20,24 @@ var min = 0;
 var hours = 0;
 var timerId;
 
-
 function start(instance, qset, version) {
   var updateTimer = $("#timer");
 
-  $("#start").on("click", function() {
+  $("#start").on("click", startGame);
+
+  $(document).on("click", ".card", cardClick);
+
+  function tick(timerId) {
+    if(timerId) return
+
+    timerId = setInterval(tock, 1000);
+    //immediately begin timer when you click the Start button
+    tock(sec, min, hours);
+  }
+
+  function startGame() {
     if(!game) {
       game = true;
-
     //generate cards
     switch(level) {
       case 1:
@@ -51,19 +60,7 @@ function start(instance, qset, version) {
     //start timer
     updateTimer.html("00:00:00");
     tick(timerId);
-  }
-
-  });
-
-  $(document).on("click", ".card", cardClick);
-
-  function tick(timerId) {
-    if(timerId) return
-
-    timerId = setInterval(tock, 1000);
-    //immediately begin timer when you click the Start button
-    tock(sec, min, hours);
-  }
+  }}
 
   function stopTimer() {
     clearInterval(timerId);
@@ -234,11 +231,22 @@ function cardClick(e) {
 
   function win() {
     //remove old cards, increase level, reset timer
-    $("#game").fadeOut(2000).empty();
+    $("#game").fadeOut(200).empty();
     level++;
     clearInterval(timerId);
     timerId = null;
-    //generate button to offer next level
+    console.log(score[0]);
+    //generate button to offer next level    
+    $("#game").fadeIn("fast", function(){
+        $(this).append("<p id='confirm'>Congrats! You did it. BANANAS. On to the next level...");
+        $('#confirm').on("click", function(){
+             $("#confirm").fadeOut(200).empty();
+             generateCards(12);
+        });
+
+    });
+
+    
   }
 
 
