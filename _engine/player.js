@@ -1,5 +1,6 @@
 (function() {
   Namespace('Concentration').Engine = (function() {
+    console.log("HEOY");
 
 //TODO:
 var level = 1;
@@ -18,48 +19,15 @@ var sec = 0;
 var min = 0;
 var hours = 0;
 var timerId;
+var updateTimer;  
+console.log(updateTimer);
 
-function start(instance, qset, version) {
-  var updateTimer = $("#timer");
-
-  $("#start").on("click", startGame);
-
-  $(document).on("click", ".card", cardClick);
-
-  function tick(timerId) {
+function tick(timerId) {
     if(timerId) return
-
     timerId = setInterval(tock, 1000);
     //immediately begin timer when you click the Start button
     tock(sec, min, hours);
-  }
-
-  function startGame() {
-    if(!game) {
-      game = true;
-    //generate cards
-    switch(level) {
-      case 1:
-      generateCards(4);
-      break;
-      case 2:
-      generateCards(6);
-      break;
-      case 3:
-      generateCards(9);
-      break;
-      case 4:
-      generateCards(12);
-      break;
-      case 5:
-      generateCards(16);
-      break;
-    }      
-
-    //start timer
-    updateTimer.html("00:00:00");
-    tick(timerId);
-  }}
+  }  
 
   function stopTimer() {
     clearInterval(timerId);
@@ -92,6 +60,44 @@ function start(instance, qset, version) {
     updateTime(newTime, updateTimer);
     }
   }
+
+function start(instance, qset, version) {
+  $("#start").on("click", startGame);
+
+  $(document).on("click", ".card", cardClick);
+
+  updateTimer  = $("#timer");
+  console.log(updateTimer);
+
+  function startGame() {
+    console.log("yep");
+    if(!game) {
+      game = true;
+    //generate cards
+    switch(level) {
+      case 1:
+      generateCards(4);
+
+      break;
+      case 2:
+      generateCards(6);
+      break;
+      case 3:
+      generateCards(9);
+      break;
+      case 4:
+      generateCards(12);
+      break;
+      case 5:
+      generateCards(16);
+      break;
+    }      
+
+    //start timer
+    updateTimer.html("00:00:00");
+    tick(timerId);
+      }
+    }
 }
 
 function updateTime(newTime, updateTimer) {
@@ -239,15 +245,12 @@ function cardClick(e) {
     $("#game").fadeIn("fast", function(){
         $(this).append("<p id='confirm'>Congrats! You did it. On to the next level...");
         $('#confirm').on("click", function(){
-            //show confirmation message that the level was completed
+            //show confirmation message 
              $("#confirm").fadeOut(200).empty();
              //generates cards based on the current level
              //levels will generate 2 times the level, plus 2 cards
              generateCards((level*2)+2);
-             console.log(level);
-             //generate new timer
-             updateTimer.html("00:00:00");
-             tick(timerId);
+             console.log(timertext);
 
         });
 
@@ -260,6 +263,8 @@ function cardClick(e) {
   return {
    start: start
  };
+
 })();
+
 }).call(this);
 
