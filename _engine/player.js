@@ -1,33 +1,32 @@
 (function() {
   Namespace('Concentration').Engine = (function() {
-    console.log("YO");
+    
+  var level = 1;
+  var game = false;
 
-//TODO:
-var level = 1;
-var game = false;
+  //question and answer set
+  var matchQ = ["past _ have + -en + help", "pres + have + -en + work", "past + be + -ing + work", "pres + will + be + -ing + play", "past + be + -ing + be", "pres + be + -ing + have", "past + shall + have + -en + have", "past + have + -en + have", "past + can + -en + be", "pres + may + have + -en + be + -ing + try", "past + may + have + -en + be + -ing + be", "past + be + -ing + study", "pres + have + -en + find", "past + lose", "pres + have + -en + be + -ing + skip", "past + can + be", "past + crash", "pres + seem", "pres + will + be + -ing + have", "pres + may + be + -ing + graduate", "past + shall + have + -en + study"];
+  var matchA = ["had helped", "has worked", "was working", "will be playing", "was being", "is having", "should have had", "had had", "could have been", "may have been trying", "might have been being", "were studying", "have found", "lost", "has been skipping", "could be", "crashed", "seems", "will be having", "may be graduating", "should have studied"];
+  var setList = [];
+  var usedCards = [];
+  var score = [];
 
-var matchQ = ["past _ have + -en + help", "pres + have + -en + work", "past + be + -ing + work", "pres + will + be + -ing + play", "past + be + -ing + be", "pres + be + -ing + have", "past + shall + have + -en + have", "past + have + -en + have", "past + can + -en + be", "pres + may + have + -en + be + -ing + try", "past + may + have + -en + be + -ing + be", "past + be + -ing + study", "pres + have + -en + find", "past + lose", "pres + have + -en + be + -ing + skip", "past + can + be", "past + crash", "pres + seem", "pres + will + be + -ing + have", "pres + may + be + -ing + graduate", "past + shall + have + -en + study"];
-var matchA = ["had helped", "has worked", "was working", "will be playing", "was being", "is having", "should have had", "had had", "could have been", "may have been trying", "might have been being", "were studying", "have found", "lost", "has been skipping", "could be", "crashed", "seems", "will be having", "may be graduating", "should have studied"];
-var setList = [];
-var usedCards = [];
-var score = [];
+  var stahp = false;
 
-var stahp = false;
+  //timer data
+  var sec = 0;
+  var min = 0;
+  var hours = 0;
+  var timerId;
+  var updateTimer;  
 
-//timer data
-var sec = 0;
-var min = 0;
-var hours = 0;
-var timerId;
-var updateTimer;  
-console.log(updateTimer);
-
-function tick(timerId) {
-    if(timerId) return
-    timerId = setInterval(tock, 1000);
-    //immediately begin timer when you click the Start button
-    tock(sec, min, hours);
-  }  
+  //all the cool stuff that makes the timer work
+  function tick(timerId) {
+      if(timerId) return
+      timerId = setInterval(tock, 1000);
+      //immediately begin timer when you click the Start button
+      tock(sec, min, hours);
+    }  
 
   function stopTimer() {
     clearInterval(timerId);
@@ -61,53 +60,50 @@ function tick(timerId) {
     }
   }
 
-function start(instance, qset, version) {
-  $("#start").on("click", startGame);
+  function start(instance, qset, version) {
+    $("#start").on("click", startGame);
 
-  $(document).on("click", ".card", cardClick);
+    $(document).on("click", ".card", cardClick);
 
-  updateTimer  = $("#timer");
+    updateTimer  = $("#timer");
 
-  function startGame() {
-    console.log("yep");
-    if(!game) {
-      game = true;
-    //generate cards
-    switch(level) {
-      case 1:
-      generateCards(4);
-      console.log("The game has started");
-      break;
-      case 2:
-      generateCards(6);
-      break;
-      case 3:
-      generateCards(9);
-      break;
-      case 4:
-      generateCards(12);
-      break;
-      case 5:
-      generateCards(16);
-      break;
-    }      
+    function startGame() {
+      if(!game) {
+        game = true;
+      //generate cards
+      switch(level) {
+        case 1:
+        generateCards(4);
+        break;
+        case 2:
+        generateCards(6);
+        break;
+        case 3:
+        generateCards(9);
+        break;
+        case 4:
+        generateCards(12);
+        break;
+        case 5:
+        generateCards(16);
+        break;
+      }      
 
-    //start timer
-    updateTimer.html("00:00:00");
-    tick(timerId);
+      //start timer
+      updateTimer.html("00:00:00");
+      tick(timerId);
+        }
       }
-    }
-}
+  }
 
-function updateTime(newTime, updateTimer) {
-  updateTimer.html(newTime);
-}
+  function updateTime(newTime, updateTimer) {
+    updateTimer.html(newTime);
+  }
 
 function generateCards(amount) {
   var maxNum = matchQ.length;
   var matchCards = (amount/2);
   while(matchCards--) {
-
       //randomly pick indeces that match the amount of cards
       //make sure there are no duplicates
       while(setList.length <= matchCards) {
@@ -116,12 +112,12 @@ function generateCards(amount) {
           setList.push(ranNum);
         }
       }
-
     }
 
     while(amount--) {
       $("#game").append("<div class='cardPanel'><div class='card'></div><div class='back'><p></p></div></div>");
     }
+
     var width = $(".card").width();
     var newKitten = "url('assets/card_back.png')";
     $(".card").css("background", newKitten);
@@ -176,8 +172,6 @@ function shuffleArray(array) {
   return array;
 }
 
-// var wasQuestion = combined[dsknfs].isQuestion;
-
 function cardClick(e) {
     var card = $(this);
     var passData = $(this).data();
@@ -185,7 +179,6 @@ function cardClick(e) {
     //flip old cards back over
     if($(".flip").length == 2) {
       $(".flip").removeClass("flip");
-      console.log();
       $(".back p").empty();
     }
 
@@ -194,26 +187,18 @@ function cardClick(e) {
     //flip what was clicked on
     card.toggleClass("flip");
     card.next().children().html(passData.data);
-
     cardHandler(card, potentialWin);
   }
 
   var won;
   function cardHandler(card, potentialWin) {
-      //storing their score ASAP in case it is a win. No lag!
-      console.log(potentialWin);
-      console.log(card);
-
       //compare indeces for a match
       if( ($($(".flip")[0]).data("index")) == ($($(".flip")[1]).data("index")) ) {
 
           //check for win on last two cards
           if($(".card").length == 2) {
-            console.log("last 2 cards, party time");
             score.push(potentialWin);
-            console.log("win @: ", potentialWin);
             stahp = true;
-            //winning message somewhere!
           }
 
           //animations
@@ -228,7 +213,6 @@ function cardClick(e) {
           
           won = setTimeout(function() {
             $(".back p").empty();
-            console.log(won);
             if($(".card").length == 0) {
               win();
             }
@@ -237,11 +221,14 @@ function cardClick(e) {
       }
 
   function win() {
-  //add time to scoreboard
+    //on game win...
+    //empty the cards out
     $("#game").fadeOut(2000, function(){
         $("#game").empty();
       });   
+    //add score to the scoreboard
     $('#score_results').append("<tr class='score_row'><td class='level'>"+level+"</td><td class='score'>"+score[level-1]+"</td></tr>");
+    //increase level, stop timer
     level++;
     clearInterval(timerId);
     timerId = null;
@@ -249,20 +236,15 @@ function cardClick(e) {
     $("#game").fadeIn("fast", function(){
         $(this).append("<p id='confirm'>Congrats! You did it. On to the next level...").hide().fadeIn(400);
         $('#confirm').on("click", function(){
-            //show confirmation message 
+              //clear confirmation so new level can generate
              $("#confirm").fadeOut(200).empty();
-             //generates cards based on the current level
              //levels will generate 2 times the level, plus 2 cards
               generateCards((level*2)+2);
-              //lets the timer continue after new round is generated
+              //once new level generates, continue timer
               stahp = false;
         });
-
-    });
-
-    
+    });    
   }
-
 
   return {
    start: start
