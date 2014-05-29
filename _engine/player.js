@@ -213,8 +213,6 @@ function cardClick(e) {
             score.push(potentialWin);
             console.log("win @: ", potentialWin);
             stahp = true;
-            //add time to scoreboard
-            $('#score_results').append("<tr class='score_row'><td class='level'>"+level+"</td><td class='score'>"+score[level-1]+"</td></tr>").hide().show('slow');
             //winning message somewhere!
           }
 
@@ -234,16 +232,16 @@ function cardClick(e) {
             if($(".card").length == 0) {
               win();
             }
-          }, 4500);
+          }, 400);
         }
       }
 
   function win() {
-    //remove old cards, increase level, reset timer
-    $("#game").fadeOut(400, function(){
+  //add time to scoreboard
+    $("#game").fadeOut(2000, function(){
         $("#game").empty();
-      });
-
+      });   
+    $('#score_results').append("<tr class='score_row'><td class='level'>"+level+"</td><td class='score'>"+score[level-1]+"</td></tr>");
     level++;
     clearInterval(timerId);
     timerId = null;
