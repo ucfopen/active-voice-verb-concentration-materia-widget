@@ -1,5 +1,6 @@
 body {
 	background: white;
+	text-align: center;
 }
 .cardPanel {
 	-webkit-perspective: 600px;
@@ -7,20 +8,24 @@ body {
 	perspective: 600px;
 	display: inline-block;
 	position: relative;
-	width: 16em;
-	height: 10em;
+	width: 12em;
+	height: 16em;
 	margin: 1%;
 }
 
 .card, .discardCard, .back {
-	border-radius: 0.9em;
+	border-radius: 0.5em;
 	box-shadow: 0px 0px 3px rgba(0,0,0,0.5);
 	float: left;
-	width: 16em;
-	height: 10em;
+	width: 12em;
+	height: 16em;
 	position: relative;
 	opacity: 0.8;
-	z-index: 30;
+	z-index: 30; 
+	-webkit-background-size: 100% 100%;           /* Safari 3.0 */
+     -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
+       -o-background-size: 100% 100%;           /* Opera 9.5 */
+          background-size: 100% 100%; 
 }
 
 .back {
@@ -81,6 +86,7 @@ body {
 
 #game {
 	margin: 0 auto;
+	text-align: center;
 }
 
 #confirm{
@@ -88,4 +94,42 @@ body {
 	display: block;
 	margin: 0px auto;
 	padding: 5px;
+}
+
+.score_headers{
+	width: 50%;
+	display: table-cell;
+	padding: 20px;
+	background-color: red;
+	color: white;
+	text-transform: uppercase;
+}
+
+#score_results td{
+	display: table-cell;
+	padding: 20px;
+}
+
+#score_results{
+	width: 35em;
+	margin: 20px auto;
+}
+
+.score_row{
+	background-color: #ccc;
+}
+
+.score_row:nth-child(odd) {
+	background-color: #aaa;
+}
+
+#timer{
+	font-size: 1.1em;
+	color: red;
+	padding: 15px;
+}
+
+#start{
+	padding: 10px;
+	border: 0px;
 }

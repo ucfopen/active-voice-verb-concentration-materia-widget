@@ -1,6 +1,6 @@
 (function() {
   Namespace('Concentration').Engine = (function() {
-    console.log("HEOY");
+    console.log("YO");
 
 //TODO:
 var level = 1;
@@ -67,7 +67,6 @@ function start(instance, qset, version) {
   $(document).on("click", ".card", cardClick);
 
   updateTimer  = $("#timer");
-  console.log(updateTimer);
 
   function startGame() {
     console.log("yep");
@@ -77,7 +76,7 @@ function start(instance, qset, version) {
     switch(level) {
       case 1:
       generateCards(4);
-
+      console.log("The game has started");
       break;
       case 2:
       generateCards(6);
@@ -124,7 +123,7 @@ function generateCards(amount) {
       $("#game").append("<div class='cardPanel'><div class='card'></div><div class='back'><p></p></div></div>");
     }
     var width = $(".card").width();
-    var newKitten = "url('http://placekitten.com/"+width+"')";
+    var newKitten = "url('assets/card_back.png')";
     $(".card").css("background", newKitten);
 
     //add used indeces from this level
@@ -186,6 +185,7 @@ function cardClick(e) {
     //flip old cards back over
     if($(".flip").length == 2) {
       $(".flip").removeClass("flip");
+      console.log();
       $(".back p").empty();
     }
 
@@ -202,6 +202,7 @@ function cardClick(e) {
   function cardHandler(card, potentialWin) {
       //storing their score ASAP in case it is a win. No lag!
       console.log(potentialWin);
+      console.log(card);
 
       //compare indeces for a match
       if( ($($(".flip")[0]).data("index")) == ($($(".flip")[1]).data("index")) ) {
@@ -212,7 +213,8 @@ function cardClick(e) {
             score.push(potentialWin);
             console.log("win @: ", potentialWin);
             stahp = true;
-            console.log(score);
+            //add time to scoreboard
+            $('#score_results').append("<tr class='score_row'><td class='level'>"+level+"</td><td class='score'>"+score[level-1]+"</td></tr>").hide().show('slow');
             //winning message somewhere!
           }
 
@@ -225,9 +227,10 @@ function cardClick(e) {
           });
 
           clearTimeout(won);
-
+          
           won = setTimeout(function() {
             $(".back p").empty();
+            console.log(won);
             if($(".card").length == 0) {
               win();
             }
@@ -237,21 +240,24 @@ function cardClick(e) {
 
   function win() {
     //remove old cards, increase level, reset timer
-    $("#game").fadeOut(200).empty();
+    $("#game").fadeOut(400, function(){
+        $("#game").empty();
+      });
+
     level++;
     clearInterval(timerId);
     timerId = null;
     //generate button to offer next level    
     $("#game").fadeIn("fast", function(){
-        $(this).append("<p id='confirm'>Congrats! You did it. On to the next level...");
+        $(this).append("<p id='confirm'>Congrats! You did it. On to the next level...").hide().fadeIn(400);
         $('#confirm').on("click", function(){
             //show confirmation message 
              $("#confirm").fadeOut(200).empty();
              //generates cards based on the current level
              //levels will generate 2 times the level, plus 2 cards
-             generateCards((level*2)+2);
-             console.log(timertext);
-
+              generateCards((level*2)+2);
+              //lets the timer continue after new round is generated
+              stahp = false;
         });
 
     });
