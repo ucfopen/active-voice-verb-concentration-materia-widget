@@ -1,6 +1,7 @@
 body {
 	background: white;
 	text-align: center;
+	font-family: 'Droid Sans';
 }
 .cardPanel {
 	-webkit-perspective: 600px;
@@ -41,7 +42,7 @@ body {
 }
 
 .back p {
-	font-size: 2.5em;
+	font-size: 2.4em;
 	text-align: center;
 	color: black;
 	float: none;
@@ -84,6 +85,10 @@ body {
 	transition: all .4s ease-in-out;
 }
 
+.card{
+	background-attachment: fixed;
+}
+
 #game {
 	margin: 0 auto;
 	text-align: center;
@@ -96,13 +101,29 @@ body {
 	padding: 5px;
 }
 
+#confirm a{
+
+}
+
+#instructions{
+	padding: 20px;
+	line-height: 1.3em;
+}
+
 .score_headers{
 	width: 50%;
 	display: table-cell;
 	padding: 20px;
-	background-color: red;
 	color: white;
 	text-transform: uppercase;
+	letter-spacing: 2px;
+	background: #ff2323;
+	background: -moz-linear-gradient(top,  #ff2323 0%, #da0000 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff2323), color-stop(100%,#da0000));
+	background: -webkit-linear-gradient(top,  #ff2323 0%,#da0000 100%);
+	background: -o-linear-gradient(top,  #ff2323 0%,#da0000 100%);
+	background: -ms-linear-gradient(top,  #ff2323 0%,#da0000 100%);
+	background: linear-gradient(to bottom,  #ff2323 0%,#da0000 100%);
 }
 
 #score_results td{
@@ -113,6 +134,7 @@ body {
 #score_results{
 	width: 35em;
 	margin: 20px auto;
+	box-shadow: 3px 3px 11px #ccc;
 }
 
 .score_row{
@@ -124,12 +146,36 @@ body {
 }
 
 #timer{
-	font-size: 1.1em;
+	font-size: 1.2em;
 	color: red;
-	padding: 15px;
+	padding: 35px;
 }
 
 #start{
-	padding: 10px;
+	padding: 10px 30px;
+	font-size: 1em;
 	border: 0px;
+	background: #eee;
+	border-radius: 3px;
+	background: -moz-linear-gradient(top,  #eee 0%, #ccc 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eee), color-stop(100%,#ccc));
+	background: -webkit-linear-gradient(top,  #eee 0%,#ccc 100%);
+	background: -o-linear-gradient(top,  #eee 0%,#ccc 100%);
+	background: -ms-linear-gradient(top,  #eee 0%,#ccc 100%);
+	background: linear-gradient(to bottom,  #eee 0%,#ccc 100%);
+	border-radius: 40px;
+}
+
+#confirm{
+	padding: 10px 10px;
+	font-size: .9em;
+	border: 0px;
+	background: #eee;
+	background: -moz-linear-gradient(top,  #eee 0%, #ccc 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eee), color-stop(100%,#ccc));
+	background: -webkit-linear-gradient(top,  #eee 0%,#ccc 100%);
+	background: -o-linear-gradient(top,  #eee 0%,#ccc 100%);
+	background: -ms-linear-gradient(top,  #eee 0%,#ccc 100%);
+	background: linear-gradient(to bottom,  #eee 0%,#ccc 100%);
+	border-radius: 40px;
 }

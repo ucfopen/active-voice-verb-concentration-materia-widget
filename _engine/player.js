@@ -1,6 +1,6 @@
 (function() {
   Namespace('Concentration').Engine = (function() {
-    
+
   var level = 1;
   var game = false;
 
@@ -119,7 +119,7 @@ function generateCards(amount) {
     }
 
     var width = $(".card").width();
-    var newKitten = "url('assets/card_back.png')";
+    var newKitten = "url('assets/card_back.png') no-repeat";
     $(".card").css("background", newKitten);
 
     //add used indeces from this level
@@ -234,7 +234,7 @@ function cardClick(e) {
     timerId = null;
     //generate button to offer next level    
     $("#game").fadeIn("fast", function(){
-        $(this).append("<p id='confirm'>Congrats! You did it. On to the next level...").hide().fadeIn(400);
+        $(this).append("<button id='confirm'>Click here to go to the next level...</button>").hide().fadeIn(400);
         $('#confirm').on("click", function(){
               //clear confirmation so new level can generate
              $("#confirm").fadeOut(200).empty();
