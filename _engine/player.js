@@ -74,6 +74,7 @@
       switch(level) {
         case 1:
         generateCards(4);
+        $("#start").fadeOut(300);
         break;
         case 2:
         generateCards(6);
@@ -234,7 +235,7 @@ function cardClick(e) {
     timerId = null;
     //generate button to offer next level    
     $("#game").fadeIn("fast", function(){
-        $(this).append("<button id='confirm'>Click here to go to the next level...</button>").hide().fadeIn(400);
+        $(this).append("<button id='confirm'>Next Level</button>").hide().fadeIn(400);
         $('#confirm').on("click", function(){
               //clear confirmation so new level can generate
              $("#confirm").fadeOut(200).empty();

@@ -155,14 +155,13 @@ body {
 	padding: 10px 30px;
 	font-size: 1em;
 	border: 0px;
-	background: #eee;
-	border-radius: 3px;
-	background: -moz-linear-gradient(top,  #eee 0%, #ccc 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eee), color-stop(100%,#ccc));
-	background: -webkit-linear-gradient(top,  #eee 0%,#ccc 100%);
-	background: -o-linear-gradient(top,  #eee 0%,#ccc 100%);
-	background: -ms-linear-gradient(top,  #eee 0%,#ccc 100%);
-	background: linear-gradient(to bottom,  #eee 0%,#ccc 100%);
+	background: #a2d876;
+	background: -moz-linear-gradient(top,  #a2d876 0%, #93c36b 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a2d876), color-stop(100%,#93c36b));
+	background: -webkit-linear-gradient(top,  #a2d876 0%,#93c36b 100%);
+	background: -o-linear-gradient(top,  #a2d876 0%,#93c36b 100%);
+	background: -ms-linear-gradient(top,  #a2d876 0%,#93c36b 100%);
+	background: linear-gradient(to bottom,  #a2d876 0%,#93c36b 100%);
 	border-radius: 40px;
 }
 
@@ -170,12 +169,12 @@ body {
 	padding: 10px 10px;
 	font-size: .9em;
 	border: 0px;
-	background: #eee;
-	background: -moz-linear-gradient(top,  #eee 0%, #ccc 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eee), color-stop(100%,#ccc));
-	background: -webkit-linear-gradient(top,  #eee 0%,#ccc 100%);
-	background: -o-linear-gradient(top,  #eee 0%,#ccc 100%);
-	background: -ms-linear-gradient(top,  #eee 0%,#ccc 100%);
-	background: linear-gradient(to bottom,  #eee 0%,#ccc 100%);
+	background: #a2d876;
+	background: -moz-linear-gradient(top,  #a2d876 0%, #93c36b 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a2d876), color-stop(100%,#93c36b));
+	background: -webkit-linear-gradient(top,  #a2d876 0%,#93c36b 100%);
+	background: -o-linear-gradient(top,  #a2d876 0%,#93c36b 100%);
+	background: -ms-linear-gradient(top,  #a2d876 0%,#93c36b 100%);
+	background: linear-gradient(to bottom,  #a2d876 0%,#93c36b 100%);
 	border-radius: 40px;
 }
