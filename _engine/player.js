@@ -12,6 +12,7 @@
   var score = [];
 
   var stahp = false;
+  var pair = 0;
 
   //timer data
   var sec = 0;
@@ -61,6 +62,7 @@
   }
 
   function start(instance, qset, version) {
+    $("#winning_visual").hide();
     $("#start").on("click", startGame);
 
     $(document).on("click", ".card", cardClick);
@@ -120,8 +122,8 @@ function generateCards(amount) {
     }
 
     var width = $(".card").width();
-    var newKitten = "url('assets/card_back.png') no-repeat";
-    $(".card").css("background", newKitten);
+    var cardBack = "url('assets/smlhorizontal.png') no-repeat";
+    $(".card").css("background", cardBack);
 
     //add used indeces from this level
     //so we don't re-use them in later levels
@@ -180,7 +182,7 @@ function cardClick(e) {
     //flip old cards back over
     if($(".flip").length == 2) {
       $(".flip").removeClass("flip");
-      $(".back p").empty();
+      // $(".back p").empty();
     }
 
     var potentialWin = $("#timer").text();
@@ -195,11 +197,13 @@ function cardClick(e) {
   function cardHandler(card, potentialWin) {
       //compare indeces for a match
       if( ($($(".flip")[0]).data("index")) == ($($(".flip")[1]).data("index")) ) {
-
+          pair++;
+          console.log(pair);
           //check for win on last two cards
           if($(".card").length == 2) {
             score.push(potentialWin);
             stahp = true;
+
           }
 
           //animations
@@ -207,13 +211,17 @@ function cardClick(e) {
             $(this).removeClass("flip card");
           });
           $(".flip").fadeIn("fast", function() {
-            $(this).addClass("discardCard").removeAttr("style");
+            discardCard = "discardCard"+pair;
+            $(this).parent().addClass(discardCard).removeAttr("style");
+            console.log(discardCard);
           });
+
+          console.log("what the "+pair+" is going on?!");
+          
 
           clearTimeout(won);
           
           won = setTimeout(function() {
-            $(".back p").empty();
             if($(".card").length == 0) {
               win();
             }
@@ -222,11 +230,6 @@ function cardClick(e) {
       }
 
   function win() {
-    //on game win...
-    //empty the cards out
-    $("#game").fadeOut(2000, function(){
-        $("#game").empty();
-      });   
     //add score to the scoreboard
     $('#score_results').append("<tr class='score_row'><td class='level'>"+level+"</td><td class='score'>"+score[level-1]+"</td></tr>");
     //increase level, stop timer
@@ -237,8 +240,12 @@ function cardClick(e) {
     $("#game").fadeIn("fast", function(){
         $(this).append("<button id='confirm'>Next Level</button>").hide().fadeIn(400);
         $('#confirm').on("click", function(){
-              //clear confirmation so new level can generate
+          //clear confirmation so new level can generate
+             //on game win...
+             //empty the cards out
+                $("#game").empty();   
              $("#confirm").fadeOut(200).empty();
+             pair = 0;
              //levels will generate 2 times the level, plus 2 cards
               generateCards((level*2)+2);
               //once new level generates, continue timer

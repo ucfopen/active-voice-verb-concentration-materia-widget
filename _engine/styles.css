@@ -9,8 +9,8 @@ body {
 	perspective: 600px;
 	display: inline-block;
 	position: relative;
-	width: 12em;
-	height: 16em;
+	width: 175px;
+	height: 130px;
 	margin: 1%;
 }
 
@@ -18,10 +18,10 @@ body {
 	border-radius: 0.5em;
 	box-shadow: 0px 0px 3px rgba(0,0,0,0.5);
 	float: left;
-	width: 12em;
-	height: 16em;
+	width: 175px;
+	height: 130px;
 	position: relative;
-	opacity: 0.8;
+	opacity: 1;
 	z-index: 30; 
 	-webkit-background-size: 100% 100%;           /* Safari 3.0 */
      -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
@@ -42,7 +42,7 @@ body {
 }
 
 .back p {
-	font-size: 2.4em;
+	font-size: 1.4em;
 	text-align: center;
 	color: black;
 	float: none;
@@ -58,9 +58,28 @@ body {
 	word-wrap: break-word;
 }
 
-.discardCard {
-	background: lightgray;
+.discardCard1 {
+	background: yellow;
 	border: 1px dashed gray;
+	opacity: .7;
+}
+
+.discardCard2 {
+	background: red;
+	border: 1px dashed gray;
+	opacity: .7;
+}
+
+.discardCard3 {
+	background: green;
+	border: 1px dashed gray;
+	opacity: .7;
+}
+
+.discardCard4 {
+	background: blue;
+	border: 1px dashed gray;
+	opacity: .7;
 }
 
 .card:hover, .discardCard:hover {
