@@ -211,9 +211,15 @@ function cardClick(e) {
             $(this).removeClass("flip card");
           });
           $(".flip").fadeIn("fast", function() {
+            //color different pairs to corresponding matches
             discardCard = "discardCard"+pair;
             $(this).parent().addClass(discardCard).removeAttr("style");
             console.log(discardCard);
+            //display winning graphic on match
+            $("#winning_visual").show();
+            setTimeout(function(){
+              $("#winning_visual").hide();
+            }, 600);
           });
 
           console.log("what the "+pair+" is going on?!");
