@@ -21,6 +21,7 @@
   var timerId;
   var updateTimer;  
 
+
   //all the cool stuff that makes the timer work
   function tick(timerId) {
       if(timerId) return
@@ -64,6 +65,12 @@
   function start(instance, qset, version) {
     $("#winning_visual").hide();
     $("#start").on("click", startGame);
+    $('#bluetheme').on("click", function(){
+          var cardBack = "url('assets/smlhorizontal-blue.png') no-repeat";
+          $(".card").css("background", cardBack);
+          $('.score_headers_red').addClass("score_headers_blue").removeClass("score_headers_red");
+          $('#bluetheme').text("Red theme");
+    });
 
     $(document).on("click", ".card", cardClick);
 
@@ -216,10 +223,6 @@ function cardClick(e) {
             $(this).parent().addClass(discardCard).removeAttr("style");
             console.log(discardCard);
             //display winning graphic on match
-            $("#winning_visual").show();
-            setTimeout(function(){
-              $("#winning_visual").hide();
-            }, 600);
           });
 
           console.log("what the "+pair+" is going on?!");
@@ -244,12 +247,12 @@ function cardClick(e) {
     timerId = null;
     //generate button to offer next level    
     $("#game").fadeIn("fast", function(){
-        $(this).append("<button id='confirm'>Next Level</button>").hide().fadeIn(400);
-        $('#confirm').on("click", function(){
+        $(this).append("<button id='confirm'>Next Level</button>");
+        $('#confirm').hide().fadeIn(400).on("click", function(){
           //clear confirmation so new level can generate
              //on game win...
              //empty the cards out
-                $("#game").empty();   
+             $("#game").empty();   
              $("#confirm").fadeOut(200).empty();
              pair = 0;
              //levels will generate 2 times the level, plus 2 cards

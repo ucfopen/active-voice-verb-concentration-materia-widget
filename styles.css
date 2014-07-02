@@ -61,24 +61,28 @@ body {
 .discardCard1 {
 	background: yellow;
 	border: 1px dashed gray;
+	border-radius: 14px;
 	opacity: .7;
 }
 
 .discardCard2 {
 	background: red;
 	border: 1px dashed gray;
+	border-radius: 14px;
 	opacity: .7;
 }
 
 .discardCard3 {
 	background: green;
 	border: 1px dashed gray;
+	border-radius: 14px;
 	opacity: .7;
 }
 
 .discardCard4 {
 	background: blue;
 	border: 1px dashed gray;
+	border-radius: 14px;
 	opacity: .7;
 }
 
@@ -120,8 +124,21 @@ body {
 	padding: 5px;
 }
 
-#confirm a{
-
+#bluetheme{
+	margin: 0px auto;
+	padding: 5px 10px;
+	font-size: 0.8em;
+	border: 0px;
+	background: #258dc8;
+	color: white;
+	background: -moz-linear-gradient(top,  #258dc8 0%, #2719e5 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#258dc8), color-stop(100%,#2719e5));
+	background: -webkit-linear-gradient(top,  #258dc8 0%,#2719e5 100%);
+	background: -o-linear-gradient(top,  #258dc8 0%,#2719e5 100%);
+	background: -ms-linear-gradient(top,  #258dc8 0%,#2719e5 100%);
+	background: linear-gradient(to bottom,  #258dc8 0%,#2719e5 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#258dc8', endColorstr='#2719e5',GradientType=0 );
+	border-radius: 40px;
 }
 
 #instructions{
@@ -129,7 +146,7 @@ body {
 	line-height: 1.3em;
 }
 
-.score_headers{
+.score_headers_red{
 	width: 50%;
 	display: table-cell;
 	padding: 20px;
@@ -143,6 +160,23 @@ body {
 	background: -o-linear-gradient(top,  #ff2323 0%,#da0000 100%);
 	background: -ms-linear-gradient(top,  #ff2323 0%,#da0000 100%);
 	background: linear-gradient(to bottom,  #ff2323 0%,#da0000 100%);
+}
+
+.score_headers_blue{
+	width: 50%;
+	display: table-cell;
+	padding: 20px;
+	color: white;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	background: #258dc8;
+	background: -moz-linear-gradient(top,  #258dc8 0%, #2719e5 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#258dc8), color-stop(100%,#2719e5));
+	background: -webkit-linear-gradient(top,  #258dc8 0%,#2719e5 100%);
+	background: -o-linear-gradient(top,  #258dc8 0%,#2719e5 100%);
+	background: -ms-linear-gradient(top,  #258dc8 0%,#2719e5 100%);
+	background: linear-gradient(to bottom,  #258dc8 0%,#2719e5 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#258dc8', endColorstr='#2719e5',GradientType=0 );
 }
 
 #score_results td{

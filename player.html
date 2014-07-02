@@ -9,14 +9,14 @@
 
 	<!-- STYLESHEETS -->
 	<link href='reset.css' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Droid+Sans|Chewy|Open+Sans' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Droid+Sans|Chewy|Open+Sans' rel='stylesheet' type='text/css'>
 	<link href='styles.css' rel='stylesheet' type='text/css'>
 
 
 	<!-- REQUIRED MATERIA JAVASCRIPT -->
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script type="text/javascript" src="/js/materia.enginecore.js"></script>
-	<script type="text/javascript" src="/js/materia.score.js"></script>
+	<script type="text/javascript" src="materia.enginecore.js"></script>
+	<script type="text/javascript" src="materia.score.js"></script>
 
 	<!-- OPTIONAL MATERIA JAVASCRIPT -->
 	<!-- <script type="text/javascript" src="/js/materia.storage.manager.js"></script> -->
@@ -38,15 +38,17 @@
 	We can do this with the data already generated for flash cards.
 	She has a deck of flashcards in Materia already
 	Can teachers import respondus for flash cards?  No</p>
+<!-- 	<p>
+		<button id='bluetheme'>Blue Theme</button>
+	</p> -->
 	<button id="start">Start</button>
 	<p id="timer">00:00:00 (Hit Start)</p>
 	<div id="game"></div>
 	<div id="results">
-		<div id="winning_visual"><img src="assets/sparkle.gif"></div>
 		<table id="score_results">
 			<tr class="score_row">
-				<th class="score_headers">Level</th>
-				<th class="score_headers">Score</th>
+				<th class="score_headers_red">Level</th>
+				<th class="score_headers_red">Score</th>
 			</tr>
 		</table>
 	</div>
