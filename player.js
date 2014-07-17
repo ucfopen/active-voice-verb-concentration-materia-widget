@@ -205,7 +205,10 @@ function cardClick(e) {
       //compare indeces for a match
       if( ($($(".flip")[0]).data("index")) == ($($(".flip")[1]).data("index")) ) {
           pair++;
-          console.log(pair);
+          //chooses the next pair's hue, so that the colors dont end up looking too similar
+          var hueSelector = ["red", "yellow", "orange", "green", "blue", "purple", "pink"];
+          //assigns the color to a variable, to be used when the pair is matched
+          colorCode = randomColor({luminosity: 'light', hue: hueSelector[pair-1]});
           //check for win on last two cards
           if($(".card").length == 2) {
             score.push(potentialWin);
@@ -220,12 +223,16 @@ function cardClick(e) {
           $(".flip").fadeIn("fast", function() {
             //color different pairs to corresponding matches
             discardCard = "discardCard"+pair;
-            $(this).parent().addClass(discardCard).removeAttr("style");
-            console.log(discardCard);
+            //assigns a color border
+            border = "3px solid " + colorCode;
+            console.log(border);
+            //changes the css for the card once it is paired
+            $(this).parent().css({border: border, borderRadius:'18px', background: colorCode});
             //display winning graphic on match
           });
 
           console.log("what the "+pair+" is going on?!");
+          console.log(randomColor());
           
 
           clearTimeout(won);

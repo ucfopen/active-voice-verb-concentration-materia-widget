@@ -12,7 +12,6 @@
 	<link href='//fonts.googleapis.com/css?family=Droid+Sans|Chewy|Open+Sans' rel='stylesheet' type='text/css'>
 	<link href='styles.css' rel='stylesheet' type='text/css'>
 
-
 	<!-- REQUIRED MATERIA JAVASCRIPT -->
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script type="text/javascript" src="materia.enginecore.js"></script>
@@ -23,25 +22,115 @@
 	<!-- <script type="text/javascript" src="/js/materia.storage.table.js"></script> -->
 
 	<!-- YOUR PREREQUISITES -->
+  <script src="assets/randomColor/randomColor.js"></script>
 
 	<!-- MAIN PLAYER SCRIPT -->
 
 	<script type="text/javascript" src="player.js"></script>
 </head>
 <body>
+Instructions: After clicking start, match cards two at a time until you have found the matching structure for each card with a sentence. To progress, click 'Next Level'. For more,  <a href="#instructions" id="instructions-link">click here</a>
+	<div id = "instructions" class = "modalDialog">
+	<div>
+		<a href="#close" title="Close" class="close">X</a>
+		<div style = "color: #000; height: 400px; overflow: auto;">
+			<h2>INSTRUCTIONS</h2>
 
-	<p id="instructions">You need to match term with definition, math problem with solution, etc.
-	It has a picture behind it, like puppies or kittens or something.
-	Timing you to encourage you to beat your own time.
-	Different levels of difficulty, with more cards for higher levels.
-	Leaderboards and high scores.
-	We can do this with the data already generated for flash cards.
-	She has a deck of flashcards in Materia already
-	Can teachers import respondus for flash cards?  No</p>
-<!-- 	<p>
-		<button id='bluetheme'>Blue Theme</button>
-	</p> -->
-	<button id="start">Start</button>
+    <p>The active voice verb expansion rule is</p>
+
+    <p>T (M) (have + -en) (be + -ing) MV</p>
+
+    <h3>T = tense</h3>
+    	<p>Tense is a grammatical concept; it may not be the same as
+    "time." English has two tenses: present and past. The tense affects the
+    first item in the verb phrase.  If the tense is present, the first item
+    in the verb phrase will be present tense. If the tense is past, the first
+    item in the verb phrase will be past.  Tense is always a part of every
+    active voice verb phrase.</p>
+
+    <h3>(M) = modal auxiliary verb</h3>
+    	<p>The M is in parentheses because it isn¹t
+    always present. A modal verb indicates probability, possibility,
+    obligation, and the like. English has six major modal verbs. Four of them
+    have present and past tense forms:</p>
+
+      <table>
+        <tr>
+          <th>Present</th><th>Past</th>
+        </tr>
+      <tr>
+        <td>Will</td><td>Would</td>
+      </tr>
+      <tr>
+        <td>Shall</td><td>Should</td>
+      </tr>
+      <tr>
+        <td>Can</td><td>Could</td>
+      </tr>
+      <tr>
+        <td>May</td><td>Might</td>
+      </tr>
+    </table>
+
+    <p>"Tense" refers to the grammatical form of the verbs, not to "time."  If
+    you "may eat," that doesn¹t mean you are eating now, in the present. And
+    if you "might eat," that doesn¹t mean you were eating in the past. In
+    fact, we often use modal verbs to convey information about the future, as
+    in "You will eat."</p>
+
+    <p>Two more modals have no past tense form:</p>
+  <ul>
+      <li>Must</li>
+      <li>Ought to</li>
+  </ul>
+  
+    <p>(Other groups of words, called "quasi-modals", also sometimes fill this
+    slot, e.g., "have to.")</p>
+
+    <h3>(have + -en) = A form of the verb "have" followed by the ­en form of
+    whatever verb comes next</h3>
+     <p> These items are in parentheses because they
+    aren¹t always present. When a "have" is present, the verb that
+    immediately follows it MUST take the ­en form. The (have + -en) conveys
+    the perfect aspect, which includes information such as verb completion,
+    duration, and repetition‹time-related elements that are not related to
+    past, present, or future. The ­en form of the verb will only end in the
+    letters ­en some of the time; with regular verbs, the ­en form looks the
+    same as the ­ed form. To figure out the ­en form of a verb, use it in a
+    sentence with "have," e.g., "I have ___________."   Here are some
+    examples of the different forms:</p>
+
+<table>
+  <tr>   <th> Base</th><th>    -en Form</th><th>        -ed Form</th></tr>
+  <tr>    <td>Think  </td><td>   Thought </td><td>     Thought</td></tr>
+  <tr>    <td>Run    </td><td>   Run     </td><td>         Ran</td></tr>
+  <tr>    <td>Go     </td><td>  Gone     </td><td>       Went</td></tr>
+  <tr>    <td>Take   </td><td>  Taken    </td><td>     Took</td></tr>
+  <tr>    <td>Move   </td><td> Moved     </td><td>   Moved</td></tr>
+  <tr>    <td>Beat   </td><td> Beaten    </td><td>    Beat</td></tr>
+  <tr>    <td>Yawn   </td><td> Yawned    </td><td>    Yawned</td></tr>
+  <tr>    <td>Smile  </td><td> Smiled    </td><td>  Smiled</td></tr>
+  <tr>    <td>Eat    </td><td>   Eaten   </td><td>     Ate</td></tr>
+</table>
+
+    <h3>(be + -ing) = A form of the verb "be" followed by the ­ing form of
+    whatever verb comes next</h3> <p>These items are in parentheses because they
+    aren¹t always present. When a "be" is present, the verb that immediately
+    follows it MUST take the ­ing form.  The (be + -ing) conveys the
+    progressive aspect, which includes information such as verb completion,
+    duration, and repetition‹time-related elements that are not related to
+    past, present, or future.</p>
+
+    <h3>MV = Main verb. The main verb is not in parentheses because every verb
+    phrase must contain a main verb</h3><p>The main verb is always the last item in
+    the verb phrase. The main verb is the verb that decides that pattern of
+    the sentence.</p>
+
+		</div>
+	</div>
+</div>
+
+	<p><button id="start">Start</button></p>
 	<p id="timer">00:00:00 (Hit Start)</p>
 	<div id="game"></div>
 	<div id="results">
