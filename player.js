@@ -206,7 +206,7 @@ function cardClick(e) {
       if( ($($(".flip")[0]).data("index")) == ($($(".flip")[1]).data("index")) ) {
           pair++;
           //chooses the next pair's hue, so that the colors dont end up looking too similar
-          var hueSelector = ["red", "yellow", "orange", "green", "blue", "purple", "pink"];
+          var hueSelector = ["red", "green", "yellow", "blue",  "orange", "purple", "monochrome", "pink"];
           //assigns the color to a variable, to be used when the pair is matched
           colorCode = randomColor({luminosity: 'light', hue: hueSelector[pair-1]});
           //check for win on last two cards
@@ -222,12 +222,8 @@ function cardClick(e) {
           });
           $(".flip").fadeIn("fast", function() {
             //color different pairs to corresponding matches
-            discardCard = "discardCard"+pair;
-            //assigns a color border
-            border = "3px solid " + colorCode;
-            console.log(border);
             //changes the css for the card once it is paired
-            $(this).parent().css({border: border, borderRadius:'18px', background: colorCode});
+            $(this).parent().css({borderRadius:'14px', background: colorCode});
             //display winning graphic on match
           });
 
@@ -262,10 +258,33 @@ function cardClick(e) {
              $("#game").empty();   
              $("#confirm").fadeOut(200).empty();
              pair = 0;
-             //levels will generate 2 times the level, plus 2 cards
-              generateCards((level*2)+2);
-              //once new level generates, continue timer
-              stahp = false;
+
+             //adjust game div to fit cards nicely
+             switch(level)
+             {
+              case 2:
+              case 5: 
+                $('#game').css("width", "560px");
+                break;
+              case 4:
+              case 6:
+                $('#game').css("width", "975px");     
+                break;
+              default: 
+                $('#game').css("width", "765px");
+                break;
+             }
+
+             //stops game at the 6th level
+             if (level <=6){
+               //levels will generate 2 times the level, plus 2 cards
+                generateCards((level*2)+2);
+                //once new level generates, continue timer
+                stahp = false;
+                }
+             else{
+                stahp = true;
+              }
         });
     });    
   }
