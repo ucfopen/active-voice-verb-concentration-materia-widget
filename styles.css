@@ -58,34 +58,6 @@ body {
 	word-wrap: break-word;
 }
 
-/*.discardCard1 {
-	background: #ccc;
-	border: 3px solid yellow;
-	border-radius: 14px;
-	opacity: .7;
-}
-
-.discardCard2 {
-	background: #ccc;
-	border: 3px solid red;
-	border-radius: 14px;
-	opacity: .7;
-}
-
-.discardCard3 {
-	background: #ccc;
-	border: 3px solid green;
-	border-radius: 14px;
-	opacity: .7;
-}
-
-.discardCard4 {
-	background: #ccc;
-	border: 3px solid blue;
-	border-radius: 14px;
-	opacity: .7;
-}*/
-
 .card:hover, .discardCard:hover {
 	cursor: pointer;
 }
