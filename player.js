@@ -1,26 +1,50 @@
 (function() {
   Namespace('Concentration').Engine = (function() {
 
-  var level = 1;
-  var game = false;
+      var level = 1;
+      var game = false;
 
-  //question and answer set
-  var matchQ = ["past _ have + -en + help", "pres + have + -en + work", "past + be + -ing + work", "pres + will + be + -ing + play", "past + be + -ing + be", "pres + be + -ing + have", "past + shall + have + -en + have", "past + have + -en + have", "past + can + -en + be", "pres + may + have + -en + be + -ing + try", "past + may + have + -en + be + -ing + be", "past + be + -ing + study", "pres + have + -en + find", "past + lose", "pres + have + -en + be + -ing + skip", "past + can + be", "past + crash", "pres + seem", "pres + will + be + -ing + have", "pres + may + be + -ing + graduate", "past + shall + have + -en + study"];
-  var matchA = ["had helped", "has worked", "was working", "will be playing", "was being", "is having", "should have had", "had had", "could have been", "may have been trying", "might have been being", "were studying", "have found", "lost", "has been skipping", "could be", "crashed", "seems", "will be having", "may be graduating", "should have studied"];
-  var setList = [];
-  var usedCards = [];
-  var score = [];
+      //question and answer set
+      var matchQ = ["past _ have + -en + help", "pres + have + -en + work", "past + be + -ing + work", "pres + will + be + -ing + play", "past + be + -ing + be", "pres + be + -ing + have", "past + shall + have + -en + have", "past + have + -en + have", "past + can + -en + be", "pres + may + have + -en + be + -ing + try", "past + may + have + -en + be + -ing + be", "past + be + -ing + study", "pres + have + -en + find", "past + lose", "pres + have + -en + be + -ing + skip", "past + can + be", "past + crash", "pres + seem", "pres + will + be + -ing + have", "pres + may + be + -ing + graduate", "past + shall + have + -en + study"];
+      var matchA = ["had helped", "has worked", "was working", "will be playing", "was being", "is having", "should have had", "had had", "could have been", "may have been trying", "might have been being", "were studying", "have found", "lost", "has been skipping", "could be", "crashed", "seems", "will be having", "may be graduating", "should have studied"];
+      var setList = [];
+      var usedCards = [];
+      var score = [];
 
-  var stahp = false;
-  var pair = 0;
+      var stahp = false;
+      var pair = 0;
 
-  //timer data
-  var sec = 0;
-  var min = 0;
-  var hours = 0;
-  var timerId;
-  var updateTimer;  
+      //timer data
+      var sec = 0;
+      var min = 0;
+      var hours = 0;
+      var timerId;
+      var updateTimer;
 
+      var cardBack = "url('assets/redcard.png') no-repeat";  
+
+    function init(){
+        level = 1;
+        game = false;
+
+      //question and answer set
+        matchQ = ["past _ have + -en + help", "pres + have + -en + work", "past + be + -ing + work", "pres + will + be + -ing + play", "past + be + -ing + be", "pres + be + -ing + have", "past + shall + have + -en + have", "past + have + -en + have", "past + can + -en + be", "pres + may + have + -en + be + -ing + try", "past + may + have + -en + be + -ing + be", "past + be + -ing + study", "pres + have + -en + find", "past + lose", "pres + have + -en + be + -ing + skip", "past + can + be", "past + crash", "pres + seem", "pres + will + be + -ing + have", "pres + may + be + -ing + graduate", "past + shall + have + -en + study"];
+        matchA = ["had helped", "has worked", "was working", "will be playing", "was being", "is having", "should have had", "had had", "could have been", "may have been trying", "might have been being", "were studying", "have found", "lost", "has been skipping", "could be", "crashed", "seems", "will be having", "may be graduating", "should have studied"];
+        setList = [];
+        usedCards = [];
+        score = [];
+
+        stahp = false;
+        pair = 0;
+
+      //timer data
+        sec = 0;
+        min = 0;
+        hours = 0;
+        timerId;
+        updateTimer;
+    }
+  
 
   //all the cool stuff that makes the timer work
   function tick(timerId) {
@@ -65,8 +89,12 @@
   function start(instance, qset, version) {
     $("#winning_visual").hide();
     $("#start").on("click", startGame);
+
+    //extra theme things
     $('#bluetheme').on("click", function(){
-          var cardBack = "url('assets/smlhorizontal-blue.png') no-repeat";
+          var themeColor = "blue";
+          var scoreHeaderTheme = ".score_headers_"+themeColor;
+          cardBack = "url('assets/smlhorizontal-"+themeColor+".png') no-repeat";
           $(".card").css("background", cardBack);
           $('.score_headers_red').addClass("score_headers_blue").removeClass("score_headers_red");
           $('#bluetheme').text("Red theme");
@@ -129,7 +157,6 @@ function generateCards(amount) {
     }
 
     var width = $(".card").width();
-    var cardBack = "url('assets/smlhorizontal.png') no-repeat";
     $(".card").css("background", cardBack);
 
     //add used indeces from this level
@@ -276,18 +303,28 @@ function cardClick(e) {
              }
 
              //stops game at the 6th level
-             if (level <=6){
+             if (level <=2){
                //levels will generate 2 times the level, plus 2 cards
                 generateCards((level*2)+2);
                 //once new level generates, continue timer
                 stahp = false;
                 }
+
              else{
                 stahp = true;
-              }
-        });
-    });    
-  }
+                $('#game').append("<h1>Congrats! You have finished the game!</h1><button id='restart'>Restart</button>");
+                $('#restart').on('click', function(){
+                  init();
+                  $("#confirm").fadeIn(200);
+                  
+                });
+                
+             }
+
+           });        
+              });
+        
+    }    
 
   return {
    start: start
