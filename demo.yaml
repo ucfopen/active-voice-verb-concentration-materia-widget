@@ -70,7 +70,7 @@ qset:
             questions:
               - 
                 text: They
-                        - 
+          - 
             materiaType: question
             id: null
             type: QA
@@ -256,4 +256,4 @@ qset:
               - 
                 text: ordinarily
     options:
-      caseSensitive:
+      caseSensitive: True
