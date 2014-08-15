@@ -1,5 +1,6 @@
 (function() {
   Namespace('Concentration').Engine = (function() {
+    console.log("ITS RUNNIN");
 
       var level = 1;
       var game = false;
@@ -21,38 +22,16 @@
       var timerId;
       var updateTimer;
 
-      var cardBack = "url('assets/redcard.png') no-repeat";  
-
-    function init(){
-        level = 1;
-        game = false;
-
-      //question and answer set
-        matchQ = ["past _ have + -en + help", "pres + have + -en + work", "past + be + -ing + work", "pres + will + be + -ing + play", "past + be + -ing + be", "pres + be + -ing + have", "past + shall + have + -en + have", "past + have + -en + have", "past + can + -en + be", "pres + may + have + -en + be + -ing + try", "past + may + have + -en + be + -ing + be", "past + be + -ing + study", "pres + have + -en + find", "past + lose", "pres + have + -en + be + -ing + skip", "past + can + be", "past + crash", "pres + seem", "pres + will + be + -ing + have", "pres + may + be + -ing + graduate", "past + shall + have + -en + study"];
-        matchA = ["had helped", "has worked", "was working", "will be playing", "was being", "is having", "should have had", "had had", "could have been", "may have been trying", "might have been being", "were studying", "have found", "lost", "has been skipping", "could be", "crashed", "seems", "will be having", "may be graduating", "should have studied"];
-        setList = [];
-        usedCards = [];
-        score = [];
-
-        stahp = false;
-        pair = 0;
-
-      //timer data
-        sec = 0;
-        min = 0;
-        hours = 0;
-        timerId;
-        updateTimer;
-    }
-  
+      var themeColor = "red";
+      var cardBack = "url('assets/redcard.png') no-repeat";
 
   //all the cool stuff that makes the timer work
   function tick(timerId) {
-      if(timerId) return
+      if(timerId) return;
       timerId = setInterval(tock, 1000);
       //immediately begin timer when you click the Start button
       tock(sec, min, hours);
-    }  
+    }
 
   function stopTimer() {
     clearInterval(timerId);
@@ -61,7 +40,7 @@
   }
 
   function tock() {
-    if(stahp == false) {
+    if(stahp === false) {
       sec++;
     if(sec >= 60) {
       min++;
@@ -79,7 +58,7 @@
       // ex. 00:09:45
       if(newTime[i] <= 9) {
         newTime[i] = "0"+newTime[i];
-      }      
+      }
     }
     newTime = newTime.join(":");
     updateTime(newTime, updateTimer);
@@ -87,17 +66,32 @@
   }
 
   function start(instance, qset, version) {
+    console.log("hi");
+
     $("#winning_visual").hide();
-    $("#start").on("click", startGame);
+    $(document).on("click", "#start", startGame);
 
     //extra theme things
-    $('#bluetheme').on("click", function(){
-          var themeColor = "blue";
-          var scoreHeaderTheme = ".score_headers_"+themeColor;
-          cardBack = "url('assets/smlhorizontal-"+themeColor+".png') no-repeat";
+    $('#theme').on("click", function(){
+      // Change to blue theme
+      if(themeColor == "red"){
+         themeColor = "blue";
+         scoreHeaderTheme = ".score_headers_"+themeColor;
+         cardBack = "url('assets/"+themeColor+"card.png') no-repeat";
+         $(".card").css("background", cardBack);
+         $('.score_headers_red').addClass("score_headers_blue").removeClass("score_headers_red");
+         $('#theme').text("Red theme").css("background-color", "red");
+      }
+      // Change to red theme
+      else{
+         themeColor = "red";
+          scoreHeaderTheme = ".score_headers_"+themeColor;
+          cardBack = "url('assets/"+themeColor+"card.png') no-repeat";
           $(".card").css("background", cardBack);
-          $('.score_headers_red').addClass("score_headers_blue").removeClass("score_headers_red");
-          $('#bluetheme').text("Red theme");
+          $('.score_headers_blue').addClass("score_headers_red").removeClass("score_headers_blue");
+          $('#theme').text("Blue theme").css("background-color","#258dc8");
+      }
+         
     });
 
     $(document).on("click", ".card", cardClick);
@@ -105,6 +99,8 @@
     updateTimer  = $("#timer");
 
     function startGame() {
+
+      console.log("Lets see");
       if(!game) {
         game = true;
       //generate cards
@@ -125,7 +121,7 @@
         case 5:
         generateCards(16);
         break;
-      }      
+      }
 
       //start timer
       updateTimer.html("00:00:00");
@@ -261,7 +257,7 @@ function cardClick(e) {
           clearTimeout(won);
           
           won = setTimeout(function() {
-            if($(".card").length == 0) {
+            if($(".card").length === 0) {
               win();
             }
           }, 400);
@@ -282,7 +278,7 @@ function cardClick(e) {
           //clear confirmation so new level can generate
              //on game win...
              //empty the cards out
-             $("#game").empty();   
+             $("#game").empty();
              $("#confirm").fadeOut(200).empty();
              pair = 0;
 
@@ -290,41 +286,33 @@ function cardClick(e) {
              switch(level)
              {
               case 2:
-              case 5: 
+              case 5:
                 $('#game').css("width", "560px");
                 break;
               case 4:
               case 6:
-                $('#game').css("width", "975px");     
+                $('#game').css("width", "975px");
                 break;
-              default: 
+              default:
                 $('#game').css("width", "765px");
                 break;
              }
 
-             //stops game at the 6th level
-             if (level <=2){
+             //stops game at the 8th level
+             if (level <=8){
                //levels will generate 2 times the level, plus 2 cards
                 generateCards((level*2)+2);
                 //once new level generates, continue timer
                 stahp = false;
-                }
+              }
 
              else{
                 stahp = true;
-                $('#game').append("<h1>Congrats! You have finished the game!</h1><button id='restart'>Restart</button>");
-                $('#restart').on('click', function(){
-                  init();
-                  $("#confirm").fadeIn(200);
-                  
-                });
-                
-             }
-
-           });        
-              });
-        
-    }    
+                $('#game').append("<h1>Congrats! You have finished the game!</h1><p>Reload the page to play again.</p>");
+              }
+         });
+      });
+    }
 
   return {
    start: start
