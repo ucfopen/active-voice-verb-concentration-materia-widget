@@ -70,30 +70,6 @@
 
     $("#winning_visual").hide();
     $(document).on("click", "#start", startGame);
-
-    //extra theme things
-    $('#theme').on("click", function(){
-      // Change to blue theme
-      if(themeColor == "red"){
-         themeColor = "blue";
-         scoreHeaderTheme = ".score_headers_"+themeColor;
-         cardBack = "url('assets/"+themeColor+"card.png') no-repeat";
-         $(".card").css("background", cardBack);
-         $('.score_headers_red').addClass("score_headers_blue").removeClass("score_headers_red");
-         $('#theme').text("Red theme").css("background-color", "red");
-      }
-      // Change to red theme
-      else{
-         themeColor = "red";
-          scoreHeaderTheme = ".score_headers_"+themeColor;
-          cardBack = "url('assets/"+themeColor+"card.png') no-repeat";
-          $(".card").css("background", cardBack);
-          $('.score_headers_blue').addClass("score_headers_red").removeClass("score_headers_blue");
-          $('#theme').text("Blue theme").css("background-color","#258dc8");
-      }
-         
-    });
-
     $(document).on("click", ".card", cardClick);
 
     updateTimer  = $("#timer");
