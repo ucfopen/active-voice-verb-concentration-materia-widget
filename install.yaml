@@ -25,11 +25,6 @@ meta_data:
   supported_data:
     - Question/Answer
   about: >
-    Matching provides a left and a right list.
-    Students are asked to match the items on
-    the left with the corresponding item on
-    the right.
+    Concentration provides a set of cards. Students flip cards over methodically to reveal matches. Each level gains more cards as the game progresses.
   excerpt: >
-    Students must match one set of words or
-    phrases to a corresponding word, phrase,
-    or definition.
+    Students must flip playing cards and match one set of words or phrases to a corresponding word, phrase, or definition.
