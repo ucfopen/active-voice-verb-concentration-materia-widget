@@ -1,6 +1,5 @@
 (function() {
   Namespace('Concentration').Engine = (function() {
-    console.log("ITS RUNNIN");
 
       var level = 1;
       var game = false;
@@ -66,7 +65,6 @@
   }
 
   function start(instance, qset, version) {
-    console.log("hi");
 
     $("#winning_visual").hide();
     $(document).on("click", "#start", startGame);
