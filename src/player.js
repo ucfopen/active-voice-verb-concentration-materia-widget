@@ -226,10 +226,10 @@ function cardClick(e) {
 
           console.log("what the "+pair+" is going on?!");
           console.log(randomColor());
-          
+
 
           clearTimeout(won);
-          
+
           won = setTimeout(function() {
             if($(".card").length === 0) {
               win();
@@ -245,7 +245,7 @@ function cardClick(e) {
     level++;
     clearInterval(timerId);
     timerId = null;
-    //generate button to offer next level    
+    //generate button to offer next level
     $("#game").fadeIn("fast", function(){
         $(this).append("<button id='confirm'>Next Level</button>");
         $('#confirm').hide().fadeIn(400).on("click", function(){
