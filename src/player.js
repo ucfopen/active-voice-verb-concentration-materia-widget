@@ -74,7 +74,6 @@
 
     function startGame() {
 
-      console.log("Lets see");
       if(!game) {
         game = true;
       //generate cards
@@ -223,10 +222,6 @@ function cardClick(e) {
             $(this).parent().css({borderRadius:'14px', background: colorCode});
             //display winning graphic on match
           });
-
-          console.log("what the "+pair+" is going on?!");
-          console.log(randomColor());
-
 
           clearTimeout(won);
 
