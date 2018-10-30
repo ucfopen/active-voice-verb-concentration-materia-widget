@@ -3,14 +3,20 @@
   "materia": {
     "cleanName": "concentration"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "start": "webpack-dev-server",
+    "build": "webpack -p",
     "build-dev": "webpack",
-    "build": "webpack -p"
+    "test": "echo 'tests have not been implemented'",
+    "test-ci": "echo 'tests have not been implemented'"
   },
-  "devDependencies": {
-    "materia-widget-development-kit": "v1.2.2"
+  "dependencies": {
+    "materia-widget-development-kit": "^2.0.0",
+    "randomcolor": "^0.5.3",
+    "reset-css": "^4.0.1"
   },
+  "author": "University of Central Florida, Center for Distributed Learning",
+  "description": "Concentration provides a set of cards. Students flip cards over methodically to reveal matches. Each level gains more cards as the game progresses.",
   "license": "AGPL-3.0"
 }

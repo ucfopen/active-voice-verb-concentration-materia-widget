@@ -1,26 +1,35 @@
 const path = require('path')
+const srcPath = path.join(__dirname, 'src') + path.sep
+const outputPath = path.join(__dirname, 'build')
+const widgetWebpack = require('materia-widget-development-kit/webpack-widget')
 
-let srcPath = path.join(process.cwd(), 'src')
-let outputPath = path.join(process.cwd(), 'build')
+const entries = widgetWebpack.getDefaultEntries()
+const copy = widgetWebpack.getDefaultCopyList()
 
-// load the reusable legacy webpack config from materia-widget-dev
-let webpackConfig = require('materia-widget-development-kit/webpack-widget').getLegacyWidgetBuildConfig({
-	preCopy: [
-		{
-			from: srcPath+'/player.js',
-			to: outputPath
-		},
-		{
-			from: srcPath+'/reset.css',
-			to: outputPath
-		}
-	]
-})
+// using default creator
+delete entries['creator.js']
+delete entries['creator.css']
 
-delete webpackConfig.entry['player.js']
-webpackConfig.entry['player.css'] = [
-	path.join(__dirname, 'src', 'player.html'),
-	path.join(__dirname, 'src', 'player.css')
+// not using coffeescript here
+entries['player.js'] = [
+	path.join(__dirname, 'src', 'player.js'),
 ]
 
-module.exports = webpackConfig
+// copy libs from node_modules to vendor dir
+const customCopy = copy.concat([
+	{
+		from: path.join(__dirname, 'node_modules', 'reset-css', 'reset.css'),
+		to: path.join(__dirname, 'build', 'vendor')
+	},
+	{
+		from: path.join(__dirname, 'node_modules', 'randomcolor', 'randomColor.js'),
+		to: path.join(__dirname, 'build', 'vendor')
+	}
+])
+
+let options = {
+	entries: entries,
+	copyList: customCopy
+}
+
+module.exports = widgetWebpack.getLegacyWidgetBuildConfig(options)
