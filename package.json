@@ -1,7 +1,7 @@
 {
-  "name": "@ucfopen/concentration",
+  "name": "@ucfopen/active-voice-verb-concentration",
   "materia": {
-    "cleanName": "concentration"
+    "cleanName": "active-voice-verb-concentration"
   },
   "version": "1.0.1",
   "scripts": {
@@ -17,6 +17,6 @@
     "reset-css": "^4.0.1"
   },
   "author": "University of Central Florida, Center for Distributed Learning",
-  "description": "Concentration provides a set of cards. Students flip cards over methodically to reveal matches. Each level gains more cards as the game progresses.",
+  "description": "Active Voice Verb Concentration provides a set of cards for students to flip to reveal matches of phrases and the active voice verb expansion rule that correlates",
   "license": "AGPL-3.0"
 }
