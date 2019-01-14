@@ -1,0 +1,29 @@
+language: node_js
+node_js:
+- '6'
+cache:
+  yarn: true
+  directories:
+  - node_modules
+before_install:
+- npm config set spin false
+- npm install -g npm@^5
+script:
+- yarn test-ci
+- yarn build
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: "p/dP9PwEvYVk+owaZ6j5tERZO9+EMigmHivwPF3Q7txMzR7Cg+MaLq2byX6Dl67+9JAjL/XM8qzKjx814vDQH+aoGEdhpPZCalXsUSyRdn7shy9E0vOgf7+JfBAJ84DLMxMDix/xDSDpoQoG+KgBibc63n2QiYT7IpCsX/l/QV5j0UVoKKQjJm1labK92UsLwVYvGyjVFt6hNAdriZKSFG040SWx6jWto7InU00Q72TIVXS6izZ2S4kt4nV0XwQXn9bpPHSxNy7X8C4DRjZEfHsVEQ4ez0T28SwikrLlYcNPZrL7lbjOJBr9BBOvmYvpchELm43E/6/20A8ydIzMrL7H8oojKM87ipBD6S5pCYmeNCmgIdLkyqQoq4fU5SxCZo/azUVgRXZPNQ1TfhDQec1PNlBCySd3BwIIRWnDC9Z2ZMcdAl16Srh1xnrttajkUOw7oGZ35h4zHUADE1kGrYUdp/pjdl15NVOq6v0WpfOFcjp9/cqAes6Y44jUSNZjgUSXe1RzDPD6NsFsNQi44mNQrxCNc/o3l9orpuAtsh2oHuJkQxHq/gIzXSatNlU3WDKAN0baHz8xC99ZCc08CkAh5mdxh7JzzcPo4neZKvbQKrthcg/JL6UC8r8bXscKMi8u8q/FvjyD16LiR+ZdP6lOMnXbSKFGSWFNPVJmvgo="
+  file:
+    - build/_output/active-voice-verb-concentration.wigt
+    - build/_output/active-voice-verb-concentration-build-info.yml
+  on:
+    tags: true
+    repo: ucfopen/active-voice-verb-concentration-materia-widget
+notifications:
+  email: false
+  slack:
+    secure: "MAeezDq5hzThr7hC1OSRAaHAfEUxFHmAcx/TX8ihEXouhzpvxtZvznObEwpzaqc++GMQmUcCE8FWfaIhnxntey7FIrDnIh7RnGpW5J/RgZ7LAgzJPwEN6LUSYR3qK/zfRnJY73EPc9eMzoOcorpyQuqZjkupmdKxS4ZbKuh+wgKxTRoAaWnG4bT4AjmojdTiL7U82CtLIjoAoySmIP7v0zbeulGGzvdvaQabRcCZlMZ225JYptUfT5f9+wT/9qdWKgdUMR40Z6gr/EcVn++wjV1zLgYsengcPh0sR1nitCrxpKL06P4mmS8cg1RhLM3haBUmhMq0yMamhcwWISTkc93kq8vR4d5uoX59ZWdvFM1xJWTOwvFJ+m7qztexX6PMvFQKQ+kyh/1jhdLUa6MYFNJcp3yVqZHFJMi2JTMYUh+e/qwYNHlh/8Es3K1LyE3HR51hCiMQSrsqqipLV8dnvOAqNbczsIAhmSLfcQEqfxAsQAQEDM5ElWKHTL2cMY6d6RvSKGVnkQIoIbmt9Dw3NJHu301GVAF2ElQezcdSf0lYjoCY0pspSepo9t1Wp75KAZ4Hx3xbO0jfX9/v9yem50nOdOo+9gY/3UUGtWMl9gM8Bk4cGYV0TM/7McAZt7WiQoCC8OOsN9UsQltYbsH7ZiX8ztZWCz3mYJpjXsWVXtk="
+
