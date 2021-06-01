@@ -12,7 +12,7 @@
     "test-ci": "echo 'tests have not been implemented'"
   },
   "dependencies": {
-    "materia-widget-development-kit": "^2.3.0",
+    "materia-widget-development-kit": "2.5.1",
     "randomcolor": "^0.5.3",
     "reset-css": "^4.0.1"
   },
