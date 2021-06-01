@@ -13,7 +13,7 @@
       "pres + be + -ing + have",
       "past + shall + have + -en + have",
       "past + have + -en + have",
-      "past + can + -en + be",
+      "past + can + have + -en + be",
       "pres + may + have + -en + be + -ing + try",
       "past + may + have + -en + be + -ing + be",
       "past + be + -ing + study",
