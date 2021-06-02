@@ -3,7 +3,7 @@
   "materia": {
     "cleanName": "active-voice-verb-concentration"
   },
-  "version": "1.0.3-alpha1",
+  "version": "1.0.3",
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack -p",
