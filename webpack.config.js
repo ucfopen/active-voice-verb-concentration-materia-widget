@@ -7,13 +7,14 @@ const entries = widgetWebpack.getDefaultEntries()
 const copy = widgetWebpack.getDefaultCopyList()
 
 // using default creator
-delete entries['creator.js']
-delete entries['creator.css']
+delete entries['creator'];
 
 // not using coffeescript here
-entries['player.js'] = [
+entries['player'] = [
+	path.join(__dirname, 'src', 'player.html'),
 	path.join(__dirname, 'src', 'player.js'),
-]
+	path.join(__dirname, 'src', 'player.scss')
+];
 
 // copy libs from node_modules to vendor dir
 const customCopy = copy.concat([
