@@ -1,6 +1,6 @@
 const path = require('path')
-const srcPath = path.join(__dirname, 'src') + path.sep
-const outputPath = path.join(__dirname, 'build')
+const srcPath = path.join(process.cwd(), 'src')
+const rootPath = process.cwd()
 const widgetWebpack = require('materia-widget-development-kit/webpack-widget')
 
 const entries = widgetWebpack.getDefaultEntries()
@@ -11,20 +11,20 @@ delete entries['creator'];
 
 // not using coffeescript here
 entries['player'] = [
-	path.join(__dirname, 'src', 'player.html'),
-	path.join(__dirname, 'src', 'player.js'),
-	path.join(__dirname, 'src', 'player.scss')
+	path.join(srcPath, 'player.html'),
+	path.join(srcPath, 'player.js'),
+	path.join(srcPath, 'player.scss')
 ];
 
 // copy libs from node_modules to vendor dir
 const customCopy = copy.concat([
 	{
-		from: path.join(__dirname, 'node_modules', 'reset-css', 'reset.css'),
-		to: path.join(__dirname, 'build', 'vendor')
+		from: path.join(rootPath, 'node_modules', 'reset-css', 'reset.css'),
+		to: path.join(rootPath, 'build', 'vendor')
 	},
 	{
-		from: path.join(__dirname, 'node_modules', 'randomcolor', 'randomColor.js'),
-		to: path.join(__dirname, 'build', 'vendor')
+		from: path.join(rootPath, 'node_modules', 'randomcolor', 'randomColor.js'),
+		to: path.join(rootPath, 'build', 'vendor')
 	}
 ])
 
