@@ -5,14 +5,14 @@
   },
   "version": "1.0.3",
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack -p",
-    "build-dev": "webpack",
+    "start": "mwdk-start",
+    "build": "mwdk-build-prod",
+    "build-dev": "mwdk-build-dev",
     "test": "echo 'tests have not been implemented'",
     "test-ci": "echo 'tests have not been implemented'"
   },
   "dependencies": {
-    "materia-widget-development-kit": "2.5.1",
+    "materia-widget-development-kit": "3.0.5",
     "randomcolor": "^0.5.3",
     "reset-css": "^4.0.1"
   },
